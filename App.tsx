@@ -3,33 +3,30 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import { PaperProvider } from "react-native-paper";
 
 import Start from "./src/screens/Start";
 import SignUp from "./src/screens/SignUp";
 import SignIn from "./src/screens/SignIn";
 import { RootStackParamList } from "./src/types";
+import { theme } from "./src/core/theme";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export default function App() {
+const App = () => {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <PaperProvider>
-        <SafeAreaProvider>
-          <NavigationContainer>
-            <Stack.Navigator
-              screenOptions={{ headerShown: false }}
-              initialRouteName="Start"
-            >
-              <Stack.Screen name="Start" component={Start} />
-              <Stack.Screen name="SignUp" component={SignUp} />
-              <Stack.Screen name="SignIn" component={SignIn} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </SafeAreaProvider>
+      <PaperProvider theme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Start">
+            <Stack.Screen name="Start" component={Start} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="SignIn" component={SignIn} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </PaperProvider>
     </GestureHandlerRootView>
   );
-}
+};
+
+export default App;
