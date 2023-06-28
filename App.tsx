@@ -8,6 +8,7 @@ import { PaperProvider } from "react-native-paper";
 import Start from "./src/screens/Start";
 import SignUp from "./src/screens/SignUp";
 import SignIn from "./src/screens/SignIn";
+import Main from "./src/screens/Main";
 import { RootStackParamList } from "./src/types";
 import { theme } from "./src/core/theme";
 
@@ -22,6 +23,7 @@ const App = () => {
             <Stack.Screen name="Start" component={Start} />
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="SignIn" component={SignIn} />
+            <Stack.Screen name="Main" component={Main} />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>
