@@ -1,9 +1,13 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
+
 import { StyleSheet, View } from "react-native";
-import { Button, Text } from "react-native-paper";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../types";
+
+import Button from "../components/Button";
+import Header from "../components/Header";
+import Background from "../components/Background";
+import Logo from "../components/Logo";
 
 export type StartScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -12,33 +16,35 @@ export type StartScreenProps = NativeStackScreenProps<
 
 function Start({ navigation }: StartScreenProps) {
   return (
-    <View style={styles.container}>
-      <Text variant="headlineMedium">스마트 쓰레기통 서비스</Text>
+    <Background>
       <View
         style={{
-          position: "absolute",
-          bottom: 130,
-          display: "flex",
           flexDirection: "row",
+          padding: 20,
           alignItems: "center",
         }}
       >
+        <Logo width={90} height={90} />
+        <Header>스마트 쓰레기통 서비스</Header>
+      </View>
+
+      <View
+        style={{
+          margin: 70,
+          flexDirection: "row",
+        }}
+      >
         <Button
-          style={{ marginRight: 10 }}
-          mode="outlined"
+          style={{ paddingRight: 30 }}
           onPress={() => navigation.navigate("SignUp")}
         >
           회원가입
         </Button>
-        <Button
-          mode="contained-tonal"
-          onPress={() => navigation.navigate("SignIn")}
-        >
+        <Button mode="contained" onPress={() => navigation.navigate("SignIn")}>
           로그인
         </Button>
       </View>
-      <StatusBar style="auto" />
-    </View>
+    </Background>
   );
 }
 

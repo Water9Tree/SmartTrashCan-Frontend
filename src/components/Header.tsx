@@ -12,10 +12,9 @@ const Header = ({ children }: Props) => (
 
 const styles = StyleSheet.create({
   header: {
-    fontSize: 25,
+    fontSize: 30,
     color: theme.colors.primary,
     fontWeight: "bold",
-    paddingVertical: 16,
   },
 });
 
