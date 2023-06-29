@@ -20,10 +20,26 @@ const App = () => {
       <PaperProvider theme={theme}>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Start">
-            <Stack.Screen name="Start" component={Start} />
-            <Stack.Screen name="SignUp" component={SignUp} />
-            <Stack.Screen name="SignIn" component={SignIn} />
-            <Stack.Screen name="Main" component={Main} />
+            <Stack.Screen
+              name="Start"
+              options={{ title: "" }}
+              component={Start}
+            />
+            <Stack.Screen
+              name="SignUp"
+              options={{ title: "" }}
+              component={SignUp}
+            />
+            <Stack.Screen
+              name="SignIn"
+              options={{ title: "" }}
+              component={SignIn}
+            />
+            <Stack.Screen
+              name="Main"
+              options={{ title: "" }}
+              component={Main}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </PaperProvider>

@@ -9,7 +9,6 @@ interface MapProps {
 }
 
 const Map = ({ buildingType, setSelectedBuilding }: MapProps) => {
-  const deviceWidth = Dimensions.get("window").width;
   const origin = [
     //TODO 빌딩 불러오기 API
     //TODO -  x,y 좌표 엉망임! 대충 찍어서 넣었는데 나중에 손봐야 함
@@ -59,9 +58,10 @@ const Map = ({ buildingType, setSelectedBuilding }: MapProps) => {
         {/* 이미지는 device 넓이에 맞춰서 꽉 차게, */}
         <Image
           source={require("../../assets/pusan_univ_map.jpg")}
+          defaultSource={require("../../assets/pusan_univ_map.jpg")}
           style={{
             aspectRatio: 1,
-            width: deviceWidth,
+            width: Dimensions.get("window").width,
             height: undefined,
           }}
         />
