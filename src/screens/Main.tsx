@@ -56,6 +56,9 @@ const Main = ({ navigation }: SignUpScreenProps) => {
           buildingType={buildingType}
           setSelectedBuilding={setSelectedBuilding}
         />
+        <View style={{ backgroundColor: "#fff", flex: 1 }}>
+          <Swipe selectedBuilding={selectedBuilding} />
+        </View>
       </View>
     ),
     notifications: () => <Text>청소부 알림</Text>,
@@ -64,7 +67,6 @@ const Main = ({ navigation }: SignUpScreenProps) => {
 
   return (
     <>
-      {/* <Swipe selectedBuilding={selectedBuilding} /> */}
       <BottomNavigation
         labeled={true}
         barStyle={{ backgroundColor: theme.colors.middleGray, height: 85 }}
