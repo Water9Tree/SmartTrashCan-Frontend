@@ -17,7 +17,7 @@ const SignIn = ({ navigation }: SignUpScreenProps) => {
 
   const [password, setPassword] = useState({ value: "" });
   const _onSignInPressed = () => {
-    navigation.navigate("Start");
+    navigation.navigate("Main");
   };
 
   return (
