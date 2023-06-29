@@ -6718,7 +6718,7 @@
     "jscodeshift" "^0.13.1"
     "nullthrows" "^1.1.1"
 
-"react-native-gesture-handler@> 1.0.0", "react-native-gesture-handler@>= 1.0.0", "react-native-gesture-handler@~2.9.0":
+"react-native-gesture-handler@>= 1.0.0", "react-native-gesture-handler@~2.9.0":
   "integrity" "sha512-a0BcH3Qb1tgVqUutc6d3VuWQkI1AM3+fJx8dkxzZs9t06qA27QgURYFoklpabuWpsUTzuKRpxleykp25E8m7tg=="
   "resolved" "https://registry.npmjs.org/react-native-gesture-handler/-/react-native-gesture-handler-2.9.0.tgz"
   "version" "2.9.0"
@@ -6733,11 +6733,6 @@
   "integrity" "sha512-1dVk9NwhoyKHCSxcrM6vY6cxmojeATsBobDicX0ZKr7DgUF2cBQRTKsimQFvzH8XhOVXyH8p4HyDSZNIFI8OlQ=="
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.19.tgz"
   "version" "0.71.19"
-
-"react-native-modalize@^2.1.1":
-  "integrity" "sha512-4/7EZWsrUqAAkkAVEnOsSdpAPQaEBewX7TvwFuzgvGDzxKpq3O58I9SnSeU8QtG/r91XYHJNaU5dAuDrcLjUaQ=="
-  "resolved" "https://registry.npmjs.org/react-native-modalize/-/react-native-modalize-2.1.1.tgz"
-  "version" "2.1.1"
 
 "react-native-paper@^5.8.0":
   "integrity" "sha512-Mde8KkWt+9VD+KMqGK5VyTskJLZCsF/gAQQxoLgRlC2C8RmVPgyG0xhgu1sD3ED7T7FewE8cKrQm+soB9FAD1Q=="
@@ -6776,7 +6771,7 @@
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
 
-"react-native@*", "react-native@> 0.50.0", "react-native@0.71.8":
+"react-native@*", "react-native@0.71.8":
   "integrity" "sha512-ftMAuhpgTkbHU9brrqsEyxcNrpYvXKeATY+if22Nfhhg1zW+6wn95w9otwTnA3xHkljPCbng8mUhmmERjGEl7g=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.71.8.tgz"
   "version" "0.71.8"
@@ -6846,7 +6841,7 @@
     "react-shallow-renderer" "^16.15.0"
     "scheduler" "^0.23.0"
 
-"react@*", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.2.0", "react@> 15.0.0", "react@>=16.3.0", "react@>=16.8", "react@>=17.0.0", "react@18.2.0":
+"react@*", "react@^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^18.2.0", "react@>=16.3.0", "react@>=16.8", "react@>=17.0.0", "react@18.2.0":
   "integrity" "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   "version" "18.2.0"

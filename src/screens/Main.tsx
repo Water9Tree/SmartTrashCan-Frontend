@@ -8,6 +8,7 @@ import { RootStackParamList } from "../types";
 
 import Map from "./Map";
 import Swipe from "./Swipe";
+import Admin from "./Admin";
 import BuildingSelector from "../components/BuildingSelector";
 import { theme } from "../core/theme";
 
@@ -58,7 +59,7 @@ const Main = ({ navigation }: SignUpScreenProps) => {
       </View>
     ),
     notifications: () => <Text>청소부 알림</Text>,
-    admin: () => <Text>관리자 페이지</Text>,
+    admin: () => <Admin />,
   });
 
   return (

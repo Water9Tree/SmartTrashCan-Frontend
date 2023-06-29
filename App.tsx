@@ -27,17 +27,17 @@ const App = () => {
             />
             <Stack.Screen
               name="SignUp"
-              options={{ title: "회원가입" }}
+              options={{ title: "" }}
               component={SignUp}
             />
             <Stack.Screen
               name="SignIn"
-              options={{ title: "로그인" }}
+              options={{ title: "" }}
               component={SignIn}
             />
             <Stack.Screen
               name="Main"
-              options={{ title: "지도" }}
+              options={{ title: "" }}
               component={Main}
             />
           </Stack.Navigator>
