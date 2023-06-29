@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Modalize } from "react-native-modalize";
+import { View, Text, ScrollView } from "react-native";
+
 import Icon from "react-native-vector-icons/Ionicons";
 import TrashCanTable from "../components/TrashCanTable";
+
+import { theme } from "../core/theme";
 
 interface SwipeProps {
   selectedBuilding: number;
@@ -47,8 +49,8 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
         name="ios-information-circle-sharp"
         color="#e51721"
       />
-      <Text style={{ color: "#450a0a" }}>
-        <Text style={{ fontWeight: "600" }}>{text} </Text>
+      <Text style={{ color: "#450a0a", fontSize: 12 }}>
+        <Text style={{ fontWeight: "600", fontSize: 12 }}>{text} </Text>
         비워야 합니다.
       </Text>
     </View>
@@ -74,19 +76,14 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
         name="ios-warning"
         color="#fdbc08"
       />
-      <Text style={{ color: "#422006" }}>
-        <Text style={{ fontWeight: "600" }}>{text} </Text>
+      <Text style={{ color: "#422006", fontSize: 12 }}>
+        <Text style={{ fontWeight: "600", fontSize: 12 }}>{text} </Text>
         50% 이상
       </Text>
     </View>
   );
   return (
-    <Modalize
-      ref={modalizeRef}
-      modalStyle={s.content__modal}
-      alwaysOpen={250}
-      handlePosition="inside"
-    >
+    <>
       {selectedBuilding === 0 ? (
         <View
           style={{
@@ -98,9 +95,8 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
         >
           <Text
             style={{
-              fontSize: 18,
-              fontWeight: "500",
-              color: "#333",
+              fontSize: 16,
+              fontWeight: "bold",
             }}
           >
             확인할 건물을 클릭해주세요
@@ -108,44 +104,29 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
         </View>
       ) : (
         <>
-          <View style={s.content__header}>
-            <Text style={s.content__heading}>
+          <View style={{ paddingHorizontal: 15, paddingTop: 20 }}>
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: "bold",
+              }}
+            >
               {selectedBuilding} {temp}
             </Text>
           </View>
-          <View style={s.content__inside}>
-            {render80Message("1층 일반, 재활용")}
-            {render50Message("1층 종이")}
-            {render50Message("2층 플라스틱")}
+          <View style={{ padding: 15 }}>
+            <ScrollView>
+              {render80Message("1층 일반, 재활용")}
+              {render50Message("1층 종이, 플라스틱")}
+              {render50Message("2층 플라스틱")}
+              {render50Message("3층 일반")}
+              {render50Message("4층 플라스틱")}
+            </ScrollView>
             <TrashCanTable />
           </View>
         </>
       )}
-    </Modalize>
+    </>
   );
 };
 export default Swipe;
-
-// 슬라이드바 커스텀 (예시코드에서 가져옴)
-// TODO 안드로이드는 shadow적용안됨. 더 찾아보기
-const s = StyleSheet.create({
-  content__header: {
-    paddingHorizontal: 15,
-    paddingTop: 20,
-  },
-  content__modal: {
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 6 },
-    shadowOpacity: 0.55,
-    shadowRadius: 20,
-  },
-  content__heading: {
-    fontSize: 20,
-    fontWeight: "600",
-    color: "#333",
-  },
-
-  content__inside: {
-    padding: 15,
-  },
-});
