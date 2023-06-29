@@ -67,7 +67,6 @@ const Main = ({ navigation }: SignUpScreenProps) => {
 
   return (
     <>
-      {/* <Swipe selectedBuilding={selectedBuilding} /> */}
       <BottomNavigation
         labeled={true}
         barStyle={{ backgroundColor: theme.colors.middleGray, height: 85 }}

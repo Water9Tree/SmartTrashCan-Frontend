@@ -1,10 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { View, Text, ScrollView } from "react-native";
 
 import Icon from "react-native-vector-icons/Ionicons";
 import TrashCanTable from "../components/TrashCanTable";
+import Button from "../components/Button";
 
-import { theme } from "../core/theme";
+import BuildingDetailModal from "../components/BuildingDetailModal";
 
 interface SwipeProps {
   selectedBuilding: number;
@@ -14,6 +15,11 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
   //TODO 건물 id만 받아오면,
   //여기 코드내에서, id -> 건물 모든 쓰레기통 정보 불러올것임
   const [temp, setTemp] = React.useState("");
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const handleDeleteBtnlick = () => {
+    setShowDeleteModal(true);
+  };
 
   React.useEffect(() => {
     //ㅎㅎ이건 걍 귀찮아서 박았음
@@ -104,7 +110,13 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
         </View>
       ) : (
         <>
-          <View style={{ paddingHorizontal: 15, paddingTop: 20 }}>
+          <View
+            style={{
+              paddingHorizontal: 15,
+              paddingTop: 20,
+              position: "relative",
+            }}
+          >
             <Text
               style={{
                 fontSize: 16,
@@ -113,6 +125,20 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
             >
               {selectedBuilding} {temp}
             </Text>
+            <Button
+              style={{
+                right: 4,
+                top: 10,
+                position: "absolute",
+              }}
+              onPress={handleDeleteBtnlick}
+            >
+              자세히
+            </Button>
+            <BuildingDetailModal
+              visible={showDeleteModal}
+              setVisible={setShowDeleteModal}
+            />
           </View>
           <View style={{ padding: 15 }}>
             <ScrollView>
@@ -122,7 +148,6 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
               {render50Message("3층 일반")}
               {render50Message("4층 플라스틱")}
             </ScrollView>
-            <TrashCanTable />
           </View>
         </>
       )}
