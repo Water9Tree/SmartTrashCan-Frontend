@@ -7,6 +7,7 @@ import { RadioButton } from "react-native-paper";
 import { RootStackParamList } from "../types";
 
 import Map from "./Map";
+import Swipe from "./Swipe";
 import BuildingSelector from "../components/BuildingSelector";
 
 export type SignUpScreenProps = NativeStackScreenProps<
@@ -34,6 +35,7 @@ const Main = ({ navigation }: SignUpScreenProps) => {
         buildingType={buildingType}
         setSelectedBuilding={setSelectedBuilding}
       />
+      <Swipe selectedBuilding={selectedBuilding} />
     </View>
   );
 };
