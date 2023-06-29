@@ -1,17 +1,20 @@
 import React, { useState } from "react";
-import Background from "../components/Background";
-import Button from "../components/Button";
-import { View, Text, Image } from "react-native";
+
+import { View, Text } from "react-native";
 import { Switch } from "react-native-paper";
 
 import Icon from "react-native-vector-icons/Ionicons";
+import PushConfirmModal from "../components/PushConfirmModal";
 
 import { theme } from "../core/theme";
 
 const Notification = () => {
-  const [isSwitchOn, setIsSwitchOn] = React.useState(true);
+  const [isSwitchOn, setIsSwitchOn] = useState(true);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+  const onToggleSwitch = () => {
+    setShowDeleteModal(true);
+  };
   return (
     <View
       style={{
@@ -36,8 +39,12 @@ const Notification = () => {
       >
         <Text>앱 푸시</Text>
         <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
+        <PushConfirmModal
+          visible={showDeleteModal}
+          setVisible={setShowDeleteModal}
+          setIsSwitchOn={setIsSwitchOn}
+        />
       </View>
-      {/*  */}
       <View
         style={{
           flex: 1,
