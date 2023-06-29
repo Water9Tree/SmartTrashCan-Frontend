@@ -28,51 +28,48 @@ const DeleteTrashCanModal = ({ visible, setVisible }: ModalProps) => {
               marginBottom: 2,
               flexDirection: "row",
               alignItems: "center",
-              alignSelf: "flex-end",
               alignContent: "space-between",
             }}
           >
-            <Text style={{ fontSize: 12 }}>506 인문관 2층-1</Text>
             <Checkbox.Android
               status={checked1 ? "checked" : "unchecked"}
               onPress={() => {
                 setChecked1(!checked1);
               }}
             />
+            <Text style={{ fontSize: 12 }}>506 인문관 2층-1</Text>
           </View>
           <View
             style={{
               marginBottom: 2,
               flexDirection: "row",
               alignItems: "center",
-              alignSelf: "flex-end",
               alignContent: "space-between",
             }}
           >
-            <Text style={{ fontSize: 12 }}>506 인문관 3층-1</Text>
             <Checkbox.Android
               status={checked2 ? "checked" : "unchecked"}
               onPress={() => {
                 setChecked2(!checked2);
               }}
             />
+            <Text style={{ fontSize: 12 }}>506 인문관 3층-1</Text>
           </View>
           <View
             style={{
               marginBottom: 2,
               flexDirection: "row",
               alignItems: "center",
-              alignSelf: "flex-end",
               alignContent: "space-between",
             }}
           >
-            <Text style={{ fontSize: 12 }}>506 인문관 4층-1</Text>
             <Checkbox.Android
               status={checked3 ? "checked" : "unchecked"}
               onPress={() => {
                 setChecked3(!checked3);
               }}
             />
+            <Text style={{ fontSize: 12 }}>506 인문관 4층-1</Text>
           </View>
         </Dialog.Content>
         <Dialog.Actions>
