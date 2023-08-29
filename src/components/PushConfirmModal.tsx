@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { Text, View } from "react-native";
 import { Button, Dialog, Portal, Checkbox } from "react-native-paper";
-import TrashCanTable from "./TrashCanTable";
 
 interface ModalProps {
   visible: boolean;
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsSwitchOn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const BuildingDetailModal = ({ visible, setVisible }: ModalProps) => {
+const PushConfirmModal = ({
+  visible,
+  setVisible,
+  setIsSwitchOn,
+}: ModalProps) => {
   const hideDialog = () => setVisible(false);
 
   return (
@@ -18,18 +22,23 @@ const BuildingDetailModal = ({ visible, setVisible }: ModalProps) => {
         visible={visible}
         onDismiss={hideDialog}
       >
-        <Dialog.Title style={{ fontSize: 16 }}>313 건설관</Dialog.Title>
+        <Dialog.Title style={{ fontSize: 16 }}>
+          알림을 끄시겠습니까?
+        </Dialog.Title>
         <Dialog.Content>
-          <TrashCanTable />
+          <Text>알림을 유지하면 쓰레기통 정보를 받을 수 있습니다.</Text>
         </Dialog.Content>
         <Dialog.Actions>
-          {/* <Button onPress={hideDialog}>취소</Button> */}
+          <Button onPress={hideDialog}>알림 유지</Button>
           <Button
-            onPress={hideDialog}
+            onPress={() => {
+              setVisible(false);
+              setIsSwitchOn(false);
+            }}
             mode="contained"
             style={{ paddingHorizontal: 6 }}
           >
-            확인
+            끄기
           </Button>
         </Dialog.Actions>
       </Dialog>
@@ -37,4 +46,4 @@ const BuildingDetailModal = ({ visible, setVisible }: ModalProps) => {
   );
 };
 
-export default BuildingDetailModal;
+export default PushConfirmModal;

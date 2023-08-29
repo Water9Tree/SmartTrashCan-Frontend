@@ -6,6 +6,7 @@ import TrashCanTable from "../components/TrashCanTable";
 import Button from "../components/Button";
 
 import BuildingDetailModal from "../components/BuildingDetailModal";
+import { theme } from "../core/theme";
 
 interface SwipeProps {
   selectedBuilding: number;
@@ -41,8 +42,8 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
     <View
       style={{
         width: "100%",
-        backgroundColor: "#faeeed",
-        padding: 5,
+        backgroundColor: theme.colors.middleGray,
+        padding: 10,
         alignItems: "center",
         flexDirection: "row",
         borderRadius: 10,
@@ -53,10 +54,10 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
         size={20}
         style={{ paddingRight: 3 }}
         name="ios-information-circle-sharp"
-        color="#e51721"
+        color={theme.colors.error}
       />
-      <Text style={{ color: "#450a0a", fontSize: 12 }}>
-        <Text style={{ fontWeight: "600", fontSize: 12 }}>{text} </Text>
+      <Text style={{ fontSize: 12 }}>
+        <Text style={{ fontWeight: "700", fontSize: 12 }}>{text} </Text>
         비워야 합니다.
       </Text>
     </View>
@@ -67,10 +68,9 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
     <View
       style={{
         width: "100%",
-        backgroundColor: "#fff7ed",
-        padding: 5,
+        backgroundColor: theme.colors.middleGray,
+        padding: 10,
         alignItems: "center",
-        // justifyContent: "start",
         flexDirection: "row",
         borderRadius: 10,
         marginBottom: 8,
@@ -80,10 +80,10 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
         size={20}
         style={{ paddingRight: 3 }}
         name="ios-warning"
-        color="#fdbc08"
+        color={theme.colors.warning}
       />
-      <Text style={{ color: "#422006", fontSize: 12 }}>
-        <Text style={{ fontWeight: "600", fontSize: 12 }}>{text} </Text>
+      <Text style={{ fontSize: 12 }}>
+        <Text style={{ fontWeight: "700", fontSize: 12 }}>{text} </Text>
         50% 이상
       </Text>
     </View>
@@ -93,7 +93,7 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
       {selectedBuilding === 0 ? (
         <View
           style={{
-            padding: 35,
+            flex: 1,
             alignItems: "center",
             justifyContent: "center",
             elevation: 3,
@@ -101,8 +101,7 @@ const Swipe = ({ selectedBuilding }: SwipeProps) => {
         >
           <Text
             style={{
-              fontSize: 16,
-              fontWeight: "bold",
+              fontSize: 15,
             }}
           >
             확인할 건물을 클릭해주세요

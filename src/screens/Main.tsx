@@ -9,6 +9,7 @@ import { RootStackParamList } from "../types";
 import Map from "./Map";
 import Swipe from "./Swipe";
 import Admin from "./Admin";
+import Notification from "./Notification";
 import BuildingSelector from "../components/BuildingSelector";
 import { theme } from "../core/theme";
 
@@ -25,17 +26,17 @@ const Main = ({ navigation }: SignUpScreenProps) => {
   const [routes] = React.useState([
     {
       key: "map",
-      focusedIcon: "trash-can",
+      focusedIcon: "trash-can-outline",
       unfocusedIcon: "trash-can-outline",
     },
     {
       key: "notifications",
-      focusedIcon: "bell",
+      focusedIcon: "bell-outline",
       unfocusedIcon: "bell-outline",
     },
     {
       key: "admin",
-      focusedIcon: "account-cog",
+      focusedIcon: "account-cog-outline",
       unfocusedIcon: "account-cog-outline",
     },
   ]);
@@ -61,7 +62,7 @@ const Main = ({ navigation }: SignUpScreenProps) => {
         </View>
       </View>
     ),
-    notifications: () => <Text>청소부 알림</Text>,
+    notifications: () => <Notification />,
     admin: () => <Admin />,
   });
 

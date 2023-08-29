@@ -16,6 +16,7 @@ export const theme = {
 
     middleGray: "#f1f5f9",
     error: "#f87171",
+    warning: "#fdbc08",
   },
 
   roundness: 2,
