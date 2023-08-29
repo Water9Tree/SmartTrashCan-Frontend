@@ -48,14 +48,4 @@ function Start({ navigation }: StartScreenProps) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    position: "relative",
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
-
 export default Start;

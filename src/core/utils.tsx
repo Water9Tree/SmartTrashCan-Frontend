@@ -13,8 +13,8 @@ export const passwordValidator = (password: string) => {
   return "";
 };
 
-export const verifyCodeValidator = (verifyCode: string) => {
-  if (!verifyCode || verifyCode.length <= 0) return "인증번호를 입력해주세요.";
+export const usernameValidator = (username: string) => {
+  if (!username || username.length <= 0) return "이름을 입력해주세요.";
 
   return "";
 };
