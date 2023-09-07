@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Text, View } from "react-native";
 import { Checkbox } from "react-native-paper";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { useSignUpMutation } from "../api/signUpApi";
+import { useSignUpMutation } from "../api/apis";
 import Background from "../components/Background";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
@@ -30,7 +30,7 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
   const [checked, setChecked] = React.useState(true);
   const { mutate: signUp } = useSignUpMutation();
 
-  const _onSignUpPressed = () => {
+  const handleSignUpButtonClick = () => {
     const idError = idValidator(id.value);
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
@@ -54,7 +54,6 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
       },
       {
         onSuccess: () => {
-          console.log("회원가입 성공");
           navigation.navigate("Start");
         },
       }
@@ -113,7 +112,7 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
       <Button
         style={{ marginTop: 4, width: "100%" }}
         mode="contained"
-        onPress={_onSignUpPressed}
+        onPress={handleSignUpButtonClick}
       >
         회원가입
       </Button>

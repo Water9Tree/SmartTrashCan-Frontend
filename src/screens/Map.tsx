@@ -4,43 +4,21 @@ import { View, Image, Dimensions } from "react-native";
 import MapMarker from "../components/MapMarker";
 
 interface MapProps {
+  data: any;
   buildingType: string;
   setSelectedBuilding: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const Map = ({ buildingType, setSelectedBuilding }: MapProps) => {
-  const origin = [
-    //TODO 빌딩 불러오기 API
-    //TODO -  x,y 좌표 엉망임! 대충 찍어서 넣었는데 나중에 손봐야 함
-    { filledTrashcan: 5, buildingId: 201, x: 2, y: 2, buildingName: "제도관" },
-    { filledTrashcan: 1, buildingId: 313, x: 4, y: 3, buildingName: "건설관" },
-    {
-      filledTrashcan: 0,
-      buildingId: 408,
-      x: 1.7,
-      y: 3,
-      buildingName: "자연대",
-    },
-    {
-      filledTrashcan: 3,
-      buildingId: 506,
-      x: 2.4,
-      y: 6,
-      buildingName: "인문대",
-    },
-    {
-      filledTrashcan: 0,
-      buildingId: 708,
-      x: 8,
-      y: 5,
-      buildingName: "경암체육관",
-    },
-  ];
+const Map = ({ data, buildingType, setSelectedBuilding }: MapProps) => {
+  const origin = data;
   const [buildings, setBuildings] = React.useState(origin);
 
   React.useEffect(() => {
     if (buildingType === "filledBin80") {
-      const temp = origin.filter((building) => building.filledTrashcan > 0);
+      const temp = origin.filter((building: any) => building.over80.length > 0);
+      setBuildings(temp);
+    } else if (buildingType === "filledBin50") {
+      const temp = origin.filter((building: any) => building.over50.length > 0);
       setBuildings(temp);
     } else if (buildingType === "all") {
       setBuildings(origin);
@@ -51,7 +29,8 @@ const Map = ({ buildingType, setSelectedBuilding }: MapProps) => {
       style={{
         position: "relative",
         backgroundColor: "white",
-        marginTop: 50,
+        marginTop: 10,
+        marginLeft: 10,
       }}
     >
       <View>
@@ -67,13 +46,12 @@ const Map = ({ buildingType, setSelectedBuilding }: MapProps) => {
         />
       </View>
       {/* 마커 표시, 마커 컴포넌트에 absolute 속성 존재 */}
-      {buildings.map((building) => {
+      {buildings?.map((building: any, index: number) => {
         return (
           <MapMarker
+            index={index}
             key={building.buildingId}
             buildingId={building.buildingId}
-            x={building.x}
-            y={building.y}
             buildingName={building.buildingName}
             setSelectedBuilding={setSelectedBuilding}
           />

@@ -26,7 +26,7 @@ const Notification = () => {
         justifyContent: "center",
       }}
     >
-      <View
+      {/* <View
         style={{
           height: 60,
           alignItems: "center",
@@ -44,7 +44,7 @@ const Notification = () => {
           setVisible={setShowDeleteModal}
           setIsSwitchOn={setIsSwitchOn}
         />
-      </View>
+      </View> */}
       <View
         style={{
           flex: 1,
@@ -87,7 +87,7 @@ const Notification = () => {
               </Text>
               <Text style={{ fontSize: 9 }}> 10분 전</Text>
             </View>
-            <Text style={{ fontSize: 12 }}>일반 쓰레기가 가득 찼습니다!</Text>
+            <Text style={{ fontSize: 12 }}>1층 비워야 합니다!</Text>
           </View>
         </View>
         <View
@@ -124,9 +124,7 @@ const Notification = () => {
               </Text>
               <Text style={{ fontSize: 9 }}> 2시간 전</Text>
             </View>
-            <Text style={{ fontSize: 12 }}>
-              일반 쓰레기가 50% 이상 찼습니다!
-            </Text>
+            <Text style={{ fontSize: 12 }}>1층 50% 이상 찼습니다!</Text>
           </View>
         </View>
         <View
@@ -163,9 +161,7 @@ const Notification = () => {
               </Text>
               <Text style={{ fontSize: 9 }}> 3시간 전</Text>
             </View>
-            <Text style={{ fontSize: 12 }}>
-              일반 쓰레기가 50% 이상 찼습니다!
-            </Text>
+            <Text style={{ fontSize: 12 }}>3층 50% 이상 찼습니다!</Text>
           </View>
         </View>
       </View>

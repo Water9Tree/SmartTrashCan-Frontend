@@ -14,12 +14,13 @@ import SignIn from "./src/screens/SignIn";
 import Main from "./src/screens/Main";
 import { RootStackParamList } from "./src/types";
 import { theme } from "./src/core/theme";
-
-const Stack = createNativeStackNavigator<RootStackParamList>();
+import { RecoilRoot } from "recoil";
 
 axios.defaults.baseURL = API_URL;
-axios.defaults.withCredentials = true;
+axios.defaults.timeout = 10000;
+// axios.defaults.withCredentials = true;
 
+const Stack = createNativeStackNavigator<RootStackParamList>();
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -34,9 +35,9 @@ const App = () => {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <QueryClientProvider client={queryClient}>
         <PaperProvider theme={theme}>
-          <NavigationContainer>
-            <Stack.Navigator initialRouteName="Start">
-              <Stack.Group>
+          <RecoilRoot>
+            <NavigationContainer>
+              <Stack.Navigator initialRouteName="Start">
                 <Stack.Screen
                   name="Start"
                   options={{ title: "" }}
@@ -52,15 +53,14 @@ const App = () => {
                   options={{ title: "" }}
                   component={SignIn}
                 />
-              </Stack.Group>
-
-              <Stack.Screen
-                name="Main"
-                options={{ title: "" }}
-                component={Main}
-              />
-            </Stack.Navigator>
-          </NavigationContainer>
+                <Stack.Screen
+                  name="Main"
+                  options={{ title: "" }}
+                  component={Main}
+                />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </RecoilRoot>
         </PaperProvider>
       </QueryClientProvider>
     </GestureHandlerRootView>

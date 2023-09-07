@@ -7,15 +7,23 @@ import { RadioButton } from "react-native-paper";
 import { RootStackParamList } from "../types";
 
 interface LogoSize {
+  refetch: any;
   buildingType: string;
   setBuildingType: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const BuildingSelector = ({ buildingType, setBuildingType }: LogoSize) => (
-  <View style={{ position: "absolute", top: 5, right: 10, zIndex: 3 }}>
+const BuildingSelector = ({
+  buildingType,
+  setBuildingType,
+  refetch,
+}: LogoSize) => (
+  <View style={{ position: "absolute", top: 0, right: 5, zIndex: 3 }}>
     <TouchableOpacity
       style={{ flexDirection: "row", alignItems: "center" }}
-      onPress={() => setBuildingType("all")}
+      onPress={() => {
+        setBuildingType("all");
+        refetch();
+      }}
     >
       <RadioButton.Android
         value="all"
@@ -23,11 +31,20 @@ const BuildingSelector = ({ buildingType, setBuildingType }: LogoSize) => (
         onPress={() => setBuildingType("all")}
         uncheckedColor="#cbd5e1"
       />
-      <Text>모든 건물</Text>
+      <Text
+        style={{
+          fontSize: 10,
+        }}
+      >
+        모든 건물
+      </Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={{ flexDirection: "row", alignItems: "center" }}
-      onPress={() => setBuildingType("filledBin80")}
+      onPress={() => {
+        setBuildingType("filledBin80");
+        refetch();
+      }}
     >
       <RadioButton.Android
         value="filledBin80"
@@ -35,11 +52,20 @@ const BuildingSelector = ({ buildingType, setBuildingType }: LogoSize) => (
         onPress={() => setBuildingType("filledBin80")}
         uncheckedColor="#cbd5e1"
       />
-      <Text>80% 이상</Text>
+      <Text
+        style={{
+          fontSize: 10,
+        }}
+      >
+        80% 이상
+      </Text>
     </TouchableOpacity>
     <TouchableOpacity
       style={{ flexDirection: "row", alignItems: "center" }}
-      onPress={() => setBuildingType("filledBin50")}
+      onPress={() => {
+        setBuildingType("filledBin50");
+        refetch();
+      }}
     >
       <RadioButton.Android
         value="filledBin50"
@@ -47,7 +73,13 @@ const BuildingSelector = ({ buildingType, setBuildingType }: LogoSize) => (
         onPress={() => setBuildingType("filledBin50")}
         uncheckedColor="#cbd5e1"
       />
-      <Text>50% 이상</Text>
+      <Text
+        style={{
+          fontSize: 10,
+        }}
+      >
+        50% 이상
+      </Text>
     </TouchableOpacity>
   </View>
 );
