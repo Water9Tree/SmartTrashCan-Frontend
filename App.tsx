@@ -12,6 +12,7 @@ import Start from "./src/screens/Start";
 import SignUp from "./src/screens/SignUp";
 import SignIn from "./src/screens/SignIn";
 import Main from "./src/screens/Main";
+import Notification from "./src/screens/Notification";
 import { RootStackParamList } from "./src/types";
 import { theme } from "./src/core/theme";
 import { RecoilRoot } from "recoil";
@@ -58,6 +59,12 @@ const App = () => {
                   options={{ title: "" }}
                   component={Main}
                 />
+                <Stack.Screen
+                  name="Notification"
+                  options={{ title: "" }}
+                  component={Notification}
+                />
+                
               </Stack.Navigator>
             </NavigationContainer>
           </RecoilRoot>

@@ -16,11 +16,12 @@ const AddTrashCanModal = ({ visible, setVisible }: ModalProps) => {
   const { mutate: addTrashCan } = useAddTrashCanMutation();
 
   const hideDialog = () => {
+    // console.log("층수 추가", floor, buildingNumber);
     addTrashCan(
       { buildingNumber: Number(buildingNumber), floorNumber: Number(floor) },
       {
         onSuccess: () => {
-          console.log("쓰레기통 추가  생성 성공!");
+          // console.log("쓰레기통 추가  생성 성공!");
           // setVisible(false);
           // addTrashCan(
           //   {

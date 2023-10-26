@@ -20,7 +20,7 @@ const AddFloorModal = ({ visible, setVisible }: ModalProps) => {
       { buildingNumber: Number(buildingNumber), floorNumber: Number(floor) },
       {
         onSuccess: () => {
-          console.log("쓰레기통 추가  생성 성공!");
+      
           // setVisible(false);
           // addTrashCan(
           //   {

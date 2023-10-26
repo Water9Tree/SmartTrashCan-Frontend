@@ -67,6 +67,7 @@ const Admin = () => {
       </Button>
       <Button
         icon="minus"
+        buttonColor="#134e4a"
         labelStyle={{ fontSize: 25, fontWeight: "bold" }}
         style={{ marginBottom: 15, width: "80%" }}
         mode="contained"

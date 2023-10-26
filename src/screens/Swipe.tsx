@@ -13,7 +13,7 @@ interface SwipeProps {
 const Swipe = ({ data, selectedBuilding }: SwipeProps) => {
   //TODO 건물 id만 받아오면,
   //여기 코드내에서, id -> 건물 모든 쓰레기통 정보 불러올것임
-  console.log(data);
+ 
   const [temp, setTemp] = React.useState<any>();
 
   React.useEffect(() => {

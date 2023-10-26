@@ -43,6 +43,7 @@ const Main = ({ navigation }: SignUpScreenProps) => {
     },
   ]);
   const { data, error, isLoading, refetch } = useGetBuildingQuery();
+ 
 
   useEffect(() => {
     refetch();

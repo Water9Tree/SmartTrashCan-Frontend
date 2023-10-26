@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Text, View } from "react-native";
 import { Button, Dialog, Portal, Checkbox } from "react-native-paper";
+import { useSetNotificationMutation } from "../api/apis";
 
 interface ModalProps {
   visible: boolean;
@@ -14,6 +15,7 @@ const PushConfirmModal = ({
   setIsSwitchOn,
 }: ModalProps) => {
   const hideDialog = () => setVisible(false);
+  const { mutate: setNotification } = useSetNotificationMutation();
 
   return (
     <Portal>
@@ -34,6 +36,7 @@ const PushConfirmModal = ({
             onPress={() => {
               setVisible(false);
               setIsSwitchOn(false);
+              setNotification({ isNotificationEnabled: false });
             }}
             mode="contained"
             style={{ paddingHorizontal: 6 }}
