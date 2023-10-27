@@ -8,7 +8,7 @@ interface ModalProps {
   setVisible: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const AddTrashCanModal = ({ visible, setVisible }: ModalProps) => {
+const AddFloorModal = ({ visible, setVisible }: ModalProps) => {
   const [buildingNumber, setBuildingNumber] = useState<string>("");
   const [floor, setFloor] = useState<string>("");
 
@@ -16,12 +16,11 @@ const AddTrashCanModal = ({ visible, setVisible }: ModalProps) => {
   const { mutate: addTrashCan } = useAddTrashCanMutation();
 
   const hideDialog = () => {
-    // console.log("층수 추가", floor, buildingNumber);
-    addTrashCan(
+    addFloor(
       { buildingNumber: Number(buildingNumber), floorNumber: Number(floor) },
       {
         onSuccess: () => {
-          // console.log("쓰레기통 추가  생성 성공!");
+      
           // setVisible(false);
           // addTrashCan(
           //   {
@@ -59,7 +58,7 @@ const AddTrashCanModal = ({ visible, setVisible }: ModalProps) => {
         visible={visible}
         onDismiss={hideDialog}
       >
-        <Dialog.Title style={{ fontSize: 16 }}>쓰레기통 추가</Dialog.Title>
+        <Dialog.Title style={{ fontSize: 16 }}>건물별 층 추가</Dialog.Title>
         <Dialog.Content>
           <TextInput
             label="건물 번호"
@@ -89,4 +88,4 @@ const AddTrashCanModal = ({ visible, setVisible }: ModalProps) => {
   );
 };
 
-export default AddTrashCanModal;
+export default AddFloorModal;

@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import { Text, View } from "react-native";
 import { Checkbox } from "react-native-paper";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-
+import { useSignUpMutation } from "../api/apis";
 import Background from "../components/Background";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
-
 import {
   emailValidator,
   passwordValidator,
   idValidator,
-  verifyCodeValidator,
+  usernameValidator,
 } from "../core/utils";
 import { RootStackParamList } from "../types";
 
@@ -24,27 +23,41 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
   const [id, setId] = useState({ value: "", error: "" });
   const [email, setEmail] = useState({ value: "", error: "" });
   const [password, setPassword] = useState({ value: "", error: "" });
-  const [verifyCode, setVerifyCode] = useState({
+  const [username, setUsername] = useState({
     value: "",
     error: "",
   });
   const [checked, setChecked] = React.useState(true);
+  const { mutate: signUp } = useSignUpMutation();
 
-  const _onSignUpPressed = () => {
+  const handleSignUpButtonClick = () => {
     const idError = idValidator(id.value);
     const emailError = emailValidator(email.value);
     const passwordError = passwordValidator(password.value);
-    const verifyCodeError = verifyCodeValidator(verifyCode.value);
+    const usernameError = usernameValidator(username.value);
 
-    if (emailError || passwordError || idError || verifyCodeError) {
+    if (emailError || passwordError || idError || usernameError) {
       setId({ ...id, error: idError });
       setEmail({ ...email, error: emailError });
       setPassword({ ...password, error: passwordError });
-      setVerifyCode({ ...verifyCode, error: verifyCodeError });
+      setUsername({ ...username, error: usernameError });
       return;
     }
 
-    navigation.navigate("Start");
+    signUp(
+      {
+        loginId: id.value,
+        email: email.value,
+        password: password.value,
+        username: username.value,
+        role: checked ? "ROLE_ADMIN" : "ROLE_ADMIN",
+      },
+      {
+        onSuccess: () => {
+          navigation.navigate("Start");
+        },
+      }
+    );
   };
 
   return (
@@ -75,11 +88,11 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
       />
 
       <TextInput
-        label="인증번호"
-        value={verifyCode.value}
-        onChangeText={(text) => setVerifyCode({ value: text, error: "" })}
-        error={!!verifyCode.error}
-        errorText={verifyCode.error}
+        label="이름"
+        value={username.value}
+        onChangeText={(text) => setUsername({ value: text, error: "" })}
+        error={!!username.error}
+        errorText={username.error}
       />
       <View
         style={{
@@ -99,7 +112,7 @@ const SignUp = ({ navigation }: SignUpScreenProps) => {
       <Button
         style={{ marginTop: 4, width: "100%" }}
         mode="contained"
-        onPress={_onSignUpPressed}
+        onPress={handleSignUpButtonClick}
       >
         회원가입
       </Button>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import { View, Text } from "react-native";
@@ -12,6 +12,8 @@ import Admin from "./Admin";
 import Notification from "./Notification";
 import BuildingSelector from "../components/BuildingSelector";
 import { theme } from "../core/theme";
+
+import { useGetBuildingQuery } from "../api/apis";
 
 export type SignUpScreenProps = NativeStackScreenProps<
   RootStackParamList,
@@ -40,6 +42,12 @@ const Main = ({ navigation }: SignUpScreenProps) => {
       unfocusedIcon: "account-cog-outline",
     },
   ]);
+  const { data, error, isLoading, refetch } = useGetBuildingQuery();
+ 
+
+  useEffect(() => {
+    refetch();
+  }, []);
   const renderScene = BottomNavigation.SceneMap({
     map: () => (
       <View
@@ -50,15 +58,17 @@ const Main = ({ navigation }: SignUpScreenProps) => {
         }}
       >
         <BuildingSelector
+          refetch={refetch}
           buildingType={buildingType}
           setBuildingType={setBuildingType}
         />
         <Map
+          data={data}
           buildingType={buildingType}
           setSelectedBuilding={setSelectedBuilding}
         />
         <View style={{ backgroundColor: "#fff", flex: 1 }}>
-          <Swipe selectedBuilding={selectedBuilding} />
+          <Swipe selectedBuilding={selectedBuilding} data={data} />
         </View>
       </View>
     ),

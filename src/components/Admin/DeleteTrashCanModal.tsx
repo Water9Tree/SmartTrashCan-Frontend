@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Text, View } from "react-native";
 import { Button, Dialog, Portal, Checkbox } from "react-native-paper";
 import TextInput from "../TextInput";
+import {useGetAllTrashCanQuery, useDeleteTrashCanMutation} from "../../api/apis";
 
 interface ModalProps {
   visible: boolean;
@@ -10,9 +11,28 @@ interface ModalProps {
 
 const DeleteTrashCanModal = ({ visible, setVisible }: ModalProps) => {
   const hideDialog = () => setVisible(false);
-  const [checked1, setChecked1] = React.useState(false);
-  const [checked2, setChecked2] = React.useState(false);
-  const [checked3, setChecked3] = React.useState(false);
+  const [checkList, setCheckList] = React.useState<any>([]); // 체크박스 상태 관리
+ 
+  const { data: trashCanList } = useGetAllTrashCanQuery();
+  const { mutate: deleteTrashCan } = useDeleteTrashCanMutation();
+
+  // console.log("으아아ㅏㄱ",trashCanList,checkList)
+
+  const handleButtonClick = () => {
+      //  console.log("삭제",checkList)
+    checkList?.map((trashCan : any) => {
+
+      deleteTrashCan(
+        { buildingNumber: Number(trashCan.buildingNumber), floorNumber: Number(trashCan.floorNumber) },
+        {
+          onSuccess: () => {
+            // console.log("쓰레기통 삭제 성공!");
+ 
+          },
+        }
+      );
+    })
+  }
 
   return (
     <Portal>
@@ -23,59 +43,35 @@ const DeleteTrashCanModal = ({ visible, setVisible }: ModalProps) => {
       >
         <Dialog.Title style={{ fontSize: 16 }}>쓰레기통 삭제</Dialog.Title>
         <Dialog.Content>
-          <View
-            style={{
-              marginBottom: 2,
-              flexDirection: "row",
-              alignItems: "center",
-              alignContent: "space-between",
-            }}
-          >
-            <Checkbox.Android
-              status={checked1 ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked1(!checked1);
-              }}
-            />
-            <Text style={{ fontSize: 12 }}>506 인문관 2층-1</Text>
-          </View>
-          <View
-            style={{
-              marginBottom: 2,
-              flexDirection: "row",
-              alignItems: "center",
-              alignContent: "space-between",
-            }}
-          >
-            <Checkbox.Android
-              status={checked2 ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked2(!checked2);
-              }}
-            />
-            <Text style={{ fontSize: 12 }}>506 인문관 3층-1</Text>
-          </View>
-          <View
-            style={{
-              marginBottom: 2,
-              flexDirection: "row",
-              alignItems: "center",
-              alignContent: "space-between",
-            }}
-          >
-            <Checkbox.Android
-              status={checked3 ? "checked" : "unchecked"}
-              onPress={() => {
-                setChecked3(!checked3);
-              }}
-            />
-            <Text style={{ fontSize: 12 }}>506 인문관 4층-1</Text>
-          </View>
+          {trashCanList?.map((trashCan : any) => {
+            return (
+              <View key={`${trashCan.buildingNumber}-${trashCan.floorNumber}`}
+                style={{
+                  marginBottom: 2,
+                  flexDirection: "row",
+                  alignItems: "center",
+                  alignContent: "space-between",
+                }}
+              >
+                <Checkbox.Android
+                  status={checkList.includes(trashCan) ? "checked" : "unchecked"}
+                  onPress={() => {
+                    setCheckList([...checkList,trashCan]);
+                  }}
+                />
+                <Text style={{ fontSize: 12 }}>
+                  {trashCan.buildingNumber} {trashCan.buildingName} {trashCan.floorNumber}층
+                </Text>
+              </View>
+            );
+          }  )}
+  
+ 
         </Dialog.Content>
         <Dialog.Actions>
           <Button onPress={hideDialog}>취소</Button>
           <Button
-            onPress={hideDialog}
+            onPress={handleButtonClick}
             mode="contained"
             style={{ paddingHorizontal: 6 }}
           >

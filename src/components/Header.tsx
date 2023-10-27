@@ -12,7 +12,7 @@ const Header = ({ children }: Props) => (
 
 const styles = StyleSheet.create({
   header: {
-    fontSize: 30,
+    fontSize: 24,
     color: theme.colors.primary,
     fontWeight: "bold",
   },
