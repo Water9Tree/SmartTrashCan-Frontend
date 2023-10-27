@@ -15,7 +15,7 @@ const Notification = ({ navigation }: any) => {
   >([]);
   const notificationListener = useRef<Subscription>();
 
-  const [isSwitchOn, setIsSwitchOn] = useState(true);
+  const [isSwitchOn, setIsSwitchOn] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const { mutate: setNotification } = useSetNotificationMutation();
@@ -74,10 +74,13 @@ const Notification = ({ navigation }: any) => {
               paddingHorizontal: 15,
             }}
             titleStyle={{
-              fontSize: 18,
+              fontSize: 13,
             }}
             key={index}
             title={noti.title}
+            descriptionStyle={{
+              fontSize: 8,
+            }}
             description={noti.body}
             left={() => <List.Icon color={"crimson"} icon="bell-outline" />}
           />
